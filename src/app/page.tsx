@@ -3,6 +3,11 @@ import { useRef } from "react";
 import Image from "next/image";
 import Button from "@/modules/button";
 import { socialLightIcons } from "./(icons)/entry";
+import { MdLocationPin, MdLocalPhone, MdMail } from "react-icons/md";
+import { FaTiktok } from "react-icons/fa";
+import { AiFillInstagram } from "react-icons/ai";
+import { IoLogoFacebook } from "react-icons/io5";
+import { FaXTwitter } from "react-icons/fa6";
 
 /* --------------------------------------------------------------------------- */
 
@@ -154,9 +159,7 @@ export default function Home() {
           </div>
 
           <div id="our-vision" className="w-full px-4">
-
-            <div className="w-full h-auto sm:h-[500px] bg-gradient-to-b from-[#51515166] to-[#FFFFFF00] rounded-lg md:rounded-4xl p-2 sm:p-8 flex flex-col xl:flex-row gap-15">
-
+            <div className="w-full h-auto xl:h-[500px] bg-gradient-to-b from-[#51515166] to-[#FFFFFF00] rounded-lg md:rounded-4xl p-2 sm:p-8 flex flex-col xl:flex-row gap-15">
               <div className="w-full sm-w-auto flex flex-col sm:flex-row gap-10 md:grow">
                 <div className="w-full sm:w-[170px]">
                   <div className="">
@@ -170,7 +173,8 @@ export default function Home() {
                   </div>
 
                   <h2 className="w-full text-gray-400 text-[20px] lg:text-[36px] hidden xl:block">
-                    Our <br/><span className="md:pl-6">Vision</span>
+                    Our <br />
+                    <span className="md:pl-6">Vision</span>
                   </h2>
 
                   <h2 className="w-full text-gray-400 text-[20px] lg:text-[36px] block xl:hidden">
@@ -222,7 +226,6 @@ export default function Home() {
                     </li>
                   </ul>
                 </div>
-
               </div>
 
               <div className="w-full h-full relative sm:grow">
@@ -231,10 +234,10 @@ export default function Home() {
                   alt=""
                   width={0}
                   height={0}
-                  className="size-full rounded-[20px] object-cover"
+                  className="w-full h-[450px] lg:size-full rounded-[20px] object-cover"
                 />
 
-                <Button className="w-[250px] h-[4rem] sm:w-[301px] sm:h-auto absolute bottom-[10px] right-[10px] rounded-[10px] flex items-center justify-around bg-glass !bg-gray-300 hover:!bg-white">
+                <Button className="max-w-[250px] h-[4rem] sm:w-[301px] sm:h-auto absolute bottom-[10px] right-[10px] rounded-[10px] flex items-center justify-around bg-glass !bg-gray-300 hover:!bg-white">
                   <span className="">Learn More</span>
 
                   <div className="size-[2.5rem] rounded-full bg-black flex items-center justify-center rotate-[135deg]">
@@ -253,15 +256,134 @@ export default function Home() {
         </div>
 
         {/* Contact */}
-        <div className="w-full h-auto sm:h-screen px-2">
-          <div id="office-design-bg" className="w-full h-auto sm:h-[652px]">
+        <div className="w-full h-auto  px-2">
+          <div
+            id="office-design-bg"
+            className="w-full h-auto sm:h-[652px] bg-[url(/images/office.jpg)] bg-cover bg-bottom flex items-center justify-center relative"
+          >
+            <div className="size-full flex flex-col items-center justify-center gap-y-10 sm:gap-y-20 sticky z-10 py-10">
+              <div className="w-full flex flex-col items-center justify-center">
+                <Image
+                  src="/logo-icon-white.svg"
+                  alt=""
+                  width={0}
+                  height={0}
+                  className="w-[150px] sm:!w-[200px] mb-10"
+                />
+                <Image
+                  src="/logo-full-white.svg"
+                  alt=""
+                  width={0}
+                  height={0}
+                  className="w-[200px]"
+                />
+              </div>
 
+              <div className="w-full flex flex-col items-center gap-[32px]">
+                <div className="w-full md:w-auto flex flex-col sm:flex-row gap-6 sm:gap-4">
+                  <div className="w-auto h-[70px] inline-flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full cursor-pointer">
+                    <MdMail className="mr-2 w-[26.13px] h-[30px]" />
+                    <a href="mailto:info@sableandgreyrealestate.com?subject=">
+                      info@sableandgreyrealestate.com
+                    </a>
+                  </div>
+
+                  <div className="flex items-center justify-evenly gap-4 flex-wrap">
+                    <a
+                      href=""
+                      className="size-[70px] sm:size-[80px] flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full"
+                    >
+                      <AiFillInstagram className="w-[26.13px] h-[30px]" />
+                    </a>
+                    <a
+                      href=""
+                      className="size-[70px] sm:size-[80px] flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full"
+                    >
+                      <IoLogoFacebook className="w-[26.13px] h-[30px]" />
+                    </a>
+                    <a
+                      href=""
+                      className="size-[70px] sm:size-[80px] flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full"
+                    >
+                      <FaXTwitter className="w-[26.13px] h-[30px]" />
+                    </a>
+                    <a
+                      href=""
+                      className="size-[70px] sm:size-[80px] flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full"
+                    >
+                      <FaTiktok className="w-[26.13px] h-[30px]" />
+                    </a>
+                  </div>
+                </div>
+
+                <div className="w-full md:w-auto flex flex-col sm:flex-row gap-4">
+                  <div className="w-auto inline-flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full cursor-pointer">
+                    <MdLocationPin className="mr-2 w-[26.13px] h-[30px]" />
+                    <a href="https">7, Howeidy A. street Kado, Abuja</a>
+                  </div>
+
+                  <div className="w-auto inline-flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full cursor-pointer">
+                    <MdLocalPhone className="mr-2 w-[26.13px] h-[30px]" />
+                    <a href="tel:+2349122582603">+2349122582603</a>
+                  </div>
+
+                  <div className="w-auto inline-flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full">
+                    <MdLocalPhone className="mr-2 w-[26.13px] h-[30px]" />
+                    <a href="tel:+2349122582603">+2349122582603</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="size-full bg-gradient-to-b from-[#00000066] to-[#000000] absolute left-0 top-0" />
+          </div>
+
+          <div className="w-full h-auto hidden md:flex items-center justify-center">
+            <h2 className="text-[90px] lg:text-[170px] text-[#212121] leading-[200px]">
+              SABLE & GREY
+            </h2>
           </div>
         </div>
       </main>
 
       {/* Footer */}
-      <footer id="#footer" className="px-2"></footer>
+      <footer id="#footer" className="px-2 divide-y divide-gray-700 space-y-2">
+        <div className="w-full h-auto sm:h-[5rem]  text-white flex flex-col sm:flex-row items-start sm:items-center justify-around px-3 gap-8">
+          <div className="w-full flex items-center justify-center sm:justify-start">
+            <img
+              src="/logo-full-white.svg"
+              alt=""
+              className="max-w-[200px] h-auto"
+            />
+          </div>
+
+          <div className="w-full sm:w-[400px] flex items-center justify-around">
+            <a href="">Home</a>
+            <a href="">About</a>
+            <a href="">Contact us</a>
+          </div>
+
+          <div className="w-full sm:w-[210px] h-[50px] flex items-center justify-evenly gap-[8px] p-[8px] rounded-md">
+            {socialLightIcons.map((icon, idx) => (
+              <a href="" title="social" key={idx} className="cursor-pointer">
+                <Image
+                  src={icon}
+                  alt=""
+                  width={40}
+                  height={40}
+                  className="size-fit"
+                />
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="w-full h-[3rem] flex items-center justify-center">
+          <p className="text-white">
+            &copy; 2025 Sable & Grey. All Rights Reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
