@@ -1,52 +1,82 @@
 "use client";
-import { useRef } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Button from "@/modules/button";
 import { socialLightIcons } from "./(icons)/entry";
 import { MdLocationPin, MdLocalPhone, MdMail } from "react-icons/md";
-import { FaTiktok } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { IoLogoFacebook } from "react-icons/io5";
 import { FaXTwitter } from "react-icons/fa6";
+import {
+  FaLinkedin,
+  FaLinkedinIn,
+  FaTiktok,
+  FaFacebook,
+  FaInstagram,
+} from "react-icons/fa";
+import { AiFillTikTok } from "react-icons/ai";
+import { TiSocialFacebookCircular } from "react-icons/ti";
+import Nav from "./(nav)/nav";
+import sliderImages from "@/slider-images/slider-entry";
 
-/* --------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------------------------- */
+
+const socialMediaHandles = {
+  ig: {
+    link: "https://instagram.com/sableandgreyrealestateltd",
+    lightIcon: FaInstagram,
+    filledIcon: AiFillInstagram,
+  },
+  twitter: {
+    link: "https://x.com/sableandgreyltd",
+    lightIcon: FaXTwitter,
+    filledIcon: FaXTwitter,
+  },
+  tiktok: {
+    link: "https://linkedin.com/@sableandgreyrealestate",
+    lightIcon: FaTiktok,
+    filledIcon: AiFillTikTok,
+  },
+  facebook: {
+    link: "https://instagram.com/sableandgreyrealestateltd",
+    lightIcon: TiSocialFacebookCircular,
+    filledIcon: FaFacebook,
+  },
+  linkedIn: {
+    link: "https://linkedin.com/@sableandgreyrealestate",
+    lightIcon: FaLinkedinIn,
+    filledIcon: FaLinkedin,
+  },
+};
 
 const navStyle =
   "w-aut0 h-[40px] px-[10px] py-[8px] bg-transparent hover:bg-[#FFFFFF0D] rounded-md";
 
 export default function Home() {
-  const sliderRef = useRef<HTMLDivElement | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Change images every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIdx) =>
+        prevIdx === sliderImages.length - 1 ? 0 : prevIdx + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [sliderImages.length]);
+
+  const goToImage = (imageIdx: number) => setCurrentImageIndex(imageIdx);
 
   return (
     <div className="relative">
-      <nav className="w-full flex h-[6.25rem] item-start md:gap-[3rem] lg:gap-[20rem] sm:absolute top-0 left-0 z-20 px-8">
-        <div className="w-[9rem] lg:w-[12.5rem] h-full">
-          <Image
-            width={0}
-            height={0}
-            src="/logo-full-white2.svg"
-            alt="logo"
-            className="!w-full !h-full"
-          />
-        </div>
-
-        <div className="w-[373px] h-auto flex items-center justify-center gap-10">
-          <a href="#hero" className={navStyle}>
-            Home
-          </a>
-          <a href="#main" className={navStyle}>
-            About Us
-          </a>
-          <a href="#contact" className={navStyle}>
-            Contact
-          </a>
-        </div>
-      </nav>
+      {/* Nav */}
+      <Nav />
 
       <main>
         {/* Hero section */}
-        <div id="hero-caption" className="h-screen relative">
-          <div className="size-full flex flex-col items-center justify-evenly gap-[40px] sticky pt-40 z-10">
+        <div id="home" className="h-screen relative">
+          <div className="size-full flex flex-col items-center justify-evenly gap-[40px] sticky pt-40 z-20">
             <div className="w-full lg:w-[52.25rem] flex flex-col items-center justify-center">
               <h1 className="text-[5.124rem] md:text-[6.25rem] lg:text-[12.5rem] font-bold leading-tight lg:leading-[212px] uppercase text-center mb-[24px]">
                 Sable & Grey
@@ -95,10 +125,15 @@ export default function Home() {
 
             {/* Slider indicator */}
             <div className="w-auto h-auto sm:w-[2.5rem] flex sm:flex-col gap-[8px] sm:absolute top-[300px] right-3.5">
-              {Array.from({ length: 5 }, (_, idx) => (
+              {sliderImages.map((_, idx) => (
                 <div
                   key={idx}
-                  className="size-[1.5rem] sm:size-[2.5rem] bg-[#FFFFFF1A] border border-white flex items-center justify-center rounded-full cursor-pointer"
+                  onClick={() => goToImage(idx)}
+                  className={`size-[1.5rem] sm:size-[2.5rem] rounded-full flex items-center justify-center cursor-pointer ${
+                    idx === currentImageIndex
+                      ? "bg-[#FFFFFF1A] border border-white"
+                      : ""
+                  }`}
                 >
                   <div className="size-[5px] rounded-full bg-white" />
                 </div>
@@ -107,11 +142,30 @@ export default function Home() {
           </div>
 
           {/* dark overlay */}
-          <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-b from-[#00000066] to-[#000000]" />
+          <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-b from-[#00000066] to-[#000000] z-10" />
+
+          {/* Background image */}
+          {sliderImages.map((image, idx) => (
+            <div
+              key={idx}
+              className={`size-full absolute top-0 left-0 inset-0 transition-opacity duration-1000 ease-in-out ${
+                idx === currentImageIndex ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{
+                backgroundImage: `url(${image.src})`,
+                backgroundSize: "cover",
+                backgroundPosition: idx === 0 ? "50% 40%":"center",
+                backgroundRepeat: "no-repeat",
+              }}
+            />
+          ))}
         </div>
 
         {/* About section */}
-        <div className="size-auto flex flex-col gap-y-[5rem] my-10 px-2">
+        <div
+          id="about"
+          className="size-auto flex flex-col gap-y-[5rem] my-10 px-2"
+        >
           <div
             id="who-we-are"
             className="w-full h-auto lg:h-[500px] flex flex-col lg:flex-row items-center p-1.5 sm:p-0 lg:border-y sm:border-gray-400 lg:divide-gray-400 lg:divide-x"
@@ -256,7 +310,7 @@ export default function Home() {
         </div>
 
         {/* Contact */}
-        <div className="w-full h-auto  px-2">
+        <div id="contact" className="w-full h-auto  px-2">
           <div
             id="office-design-bg"
             className="w-full h-auto sm:h-[652px] bg-[url(/images/office.jpg)] bg-cover bg-bottom flex items-center justify-center relative"
