@@ -42,7 +42,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-body nav {
+body #big-nav {
   background: rgba(255, 255, 255, 0.1);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
@@ -59,15 +59,7 @@ h6 {
   font-family: "neutral-sans";
 }
 
-/* Hero section */
-body #hero-caption {
-  background-image: url("/images/slider-image2.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-main #hero-caption h1 {
+main #home h1 {
   color: rgba(255, 255, 255, 0.1);
   background-clip: text;
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
