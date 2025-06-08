@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-/* ---------------------------------- */
+/* ---------------------------------------------------- */
 
 const navStyle =
   "w-aut0 h-[40px] px-[10px] py-[8px] bg-transparent hover:bg-[#FFFFFF0D] rounded-md";
@@ -11,9 +11,6 @@ const navStyle =
 const navItems = [
   { icon: "🏠", label: "Home", href: "#" },
   { icon: "👤", label: "About", href: "#" },
-  { icon: "💼", label: "Services", href: "#" },
-  { icon: "📁", label: "Portfolio", href: "#" },
-  { icon: "📝", label: "Blog", href: "#" },
   { icon: "📞", label: "Contact", href: "#" },
 ];
 
@@ -21,7 +18,6 @@ export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNav = () => {
-
     setIsOpen(!isOpen);
   };
 
@@ -37,8 +33,6 @@ export default function Nav() {
 
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
-
-
 
   return (
     <nav className="w-full">
@@ -71,11 +65,12 @@ export default function Nav() {
 
       {/* phones and tablet */}
       <div id="small-nav" className="w-full lg:hidden">
-        <button type="button"
+        <button
+          type="button"
           className="w-auto fixed top-3 right-2.5 z-50 flex items-center justify-center gap-1.5 py-[12px] px-[20px] bg-[#ffffff42] rounded-md cursor-pointer"
           onClick={toggleNav}
         >
-          <img src="/logo-icon-white.svg" alt="" className="size-[20px]" />
+          <Image src="/logo-icon-white.svg" alt="" className="size-[20px]" />
           <span className="uppercase font-bold text-white">menu</span>
         </button>
 
@@ -117,7 +112,6 @@ export default function Nav() {
                       href={item.href}
                       className="group relative block p-4 px-6 bg-[#ffffff42] text-white no-underline rounded-xl transition-all duration-300 font-medium text-lg overflow-hidden hover:translate-x-2"
                     >
-                      {/* <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-indigo-500 via-opacity-30 to-transparent transition-transform duration-500 -translate-x-full group-hover:translate-x-full"></span> */}
                       <span className="relative">
                         {item.icon} {item.label}
                       </span>

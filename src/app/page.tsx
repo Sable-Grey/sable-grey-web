@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, createElement } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Button from "@/modules/button";
@@ -50,9 +51,6 @@ const socialMediaHandles: Record<any, {link: string, lightIcon:IconType,filledIc
   },
 };
 
-const navStyle =
-  "w-aut0 h-[40px] px-[10px] py-[8px] bg-transparent hover:bg-[#FFFFFF0D] rounded-md";
-
 export default function Home() {
   const router = useRouter();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -91,7 +89,6 @@ export default function Home() {
             </div>
 
             <Button
-              variant="dark"
               className="w-[340px] flex items-center justify-around rounded-full bg-[#212121] hover:bg-[#484848] text-white"
               onClick={() => router.push("/#contact")}
             >
@@ -277,7 +274,7 @@ export default function Home() {
                         <span className="text-white">
                           Customer Centricity:
                         </span>{" "}
-                        Our clients' needs shape our designs, service, and
+                        Our clients&apos; needs shape our designs, service, and
                         strategy.
                       </div>
                     </li>
@@ -407,7 +404,7 @@ export default function Home() {
       <footer id="#footer" className="px-2 divide-y divide-gray-700 space-y-2">
         <div className="w-full h-auto sm:h-[5rem]  text-white flex flex-col sm:flex-row items-start sm:items-center justify-around px-3 gap-8">
           <div className="w-full flex items-center justify-center sm:justify-start">
-            <img
+            <Image
               src="/logo-full-white.svg"
               alt=""
               className="max-w-[200px] h-auto"
@@ -415,9 +412,9 @@ export default function Home() {
           </div>
 
           <div className="w-full sm:w-[400px] flex items-center justify-around">
-            <a href="/#home">Home</a>
-            <a href="/#about">About</a>
-            <a href="/#contact">Contact us</a>
+            <Link href="/#home">Home</Link>
+            <Link href="/#about">About</Link>
+            <Link href="/#contact">Contact us</Link>
           </div>
 
           <div className="w-full sm:w-[210px] h-[50px] flex items-center justify-evenly gap-[8px] p-[8px] rounded-md">
