@@ -1,11 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, createElement } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import Button from "@/modules/button";
 import { socialLightIcons } from "./(icons)/entry";
 import { MdLocationPin, MdLocalPhone, MdMail } from "react-icons/md";
 import { AiFillInstagram } from "react-icons/ai";
-import { IoLogoFacebook } from "react-icons/io5";
 import { FaXTwitter } from "react-icons/fa6";
 import {
   FaLinkedin,
@@ -18,10 +18,11 @@ import { AiFillTikTok } from "react-icons/ai";
 import { TiSocialFacebookCircular } from "react-icons/ti";
 import Nav from "./(nav)/nav";
 import sliderImages from "@/slider-images/slider-entry";
+import { IconType } from "react-icons";
 
 /* --------------------------------------------------------------------------------------------------- */
 
-const socialMediaHandles = {
+const socialMediaHandles: Record<any, {link: string, lightIcon:IconType,filledIcon:IconType}> = {
   ig: {
     link: "https://instagram.com/sableandgreyrealestateltd",
     lightIcon: FaInstagram,
@@ -33,7 +34,7 @@ const socialMediaHandles = {
     filledIcon: FaXTwitter,
   },
   tiktok: {
-    link: "https://linkedin.com/@sableandgreyrealestate",
+    link: "https://tiktok.com/@sableandgreyrealestate",
     lightIcon: FaTiktok,
     filledIcon: AiFillTikTok,
   },
@@ -43,7 +44,7 @@ const socialMediaHandles = {
     filledIcon: FaFacebook,
   },
   linkedIn: {
-    link: "https://linkedin.com/@sableandgreyrealestate",
+    link: "https://linkedin.com/company/sable-and-grey/",
     lightIcon: FaLinkedinIn,
     filledIcon: FaLinkedin,
   },
@@ -53,6 +54,7 @@ const navStyle =
   "w-aut0 h-[40px] px-[10px] py-[8px] bg-transparent hover:bg-[#FFFFFF0D] rounded-md";
 
 export default function Home() {
+  const router = useRouter();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Change images every 5 seconds
@@ -91,6 +93,7 @@ export default function Home() {
             <Button
               variant="dark"
               className="w-[340px] flex items-center justify-around rounded-full bg-[#212121] hover:bg-[#484848] text-white"
+              onClick={() => router.push("/#contact")}
             >
               <span className="uppercase">Talk To us today</span>
 
@@ -149,12 +152,12 @@ export default function Home() {
             <div
               key={idx}
               className={`size-full absolute top-0 left-0 inset-0 transition-opacity duration-1000 ease-in-out ${
-                idx === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                idx === currentImageIndex ? "opacity-100" : "opacity-0"
               }`}
               style={{
                 backgroundImage: `url(${image.src})`,
                 backgroundSize: "cover",
-                backgroundPosition: idx === 0 ? "50% 40%":"center",
+                backgroundPosition: idx === 0 ? "50% 40%" : "center",
                 backgroundRepeat: "no-repeat",
               }}
             />
@@ -291,7 +294,10 @@ export default function Home() {
                   className="w-full h-[450px] lg:size-full rounded-[20px] object-cover"
                 />
 
-                <Button className="max-w-[250px] h-[4rem] sm:w-[301px] sm:h-auto absolute bottom-[10px] right-[10px] rounded-[10px] flex items-center justify-around bg-glass !bg-gray-300 hover:!bg-white">
+                <Button
+                  className="max-w-[250px] h-[4rem] sm:w-[301px] absolute bottom-[10px] left-[10px] rounded-[10px] flex items-center justify-around bg-glass !bg-[#FFFFFF80] hover:!bg-white"
+                  onClick={() => router.push("/#contact")}
+                >
                   <span className="">Learn More</span>
 
                   <div className="size-[2.5rem] rounded-full bg-black flex items-center justify-center rotate-[135deg]">
@@ -337,43 +343,40 @@ export default function Home() {
                 <div className="w-full md:w-auto flex flex-col sm:flex-row gap-6 sm:gap-4">
                   <div className="w-auto h-[70px] inline-flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full cursor-pointer">
                     <MdMail className="mr-2 w-[26.13px] h-[30px]" />
-                    <a href="mailto:info@sableandgreyrealestate.com?subject=">
+                    <a
+                      href="mailto:info@sableandgreyrealestate.com?subject="
+                      target="_blank"
+                      rel="noopener"
+                    >
                       info@sableandgreyrealestate.com
                     </a>
                   </div>
 
                   <div className="flex items-center justify-evenly gap-4 flex-wrap">
-                    <a
-                      href=""
-                      className="size-[70px] sm:size-[80px] flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full"
-                    >
-                      <AiFillInstagram className="w-[26.13px] h-[30px]" />
-                    </a>
-                    <a
-                      href=""
-                      className="size-[70px] sm:size-[80px] flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full"
-                    >
-                      <IoLogoFacebook className="w-[26.13px] h-[30px]" />
-                    </a>
-                    <a
-                      href=""
-                      className="size-[70px] sm:size-[80px] flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full"
-                    >
-                      <FaXTwitter className="w-[26.13px] h-[30px]" />
-                    </a>
-                    <a
-                      href=""
-                      className="size-[70px] sm:size-[80px] flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full"
-                    >
-                      <FaTiktok className="w-[26.13px] h-[30px]" />
-                    </a>
+                    {Object.keys(socialMediaHandles).map((social, idx) => {
+                      return (<a
+                      key={idx}
+                        href={socialMediaHandles[social].link}
+                        className="size-[70px] sm:size-[80px] flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full"
+                        target="_blank"
+                      >
+                        {createElement(socialMediaHandles[social].filledIcon, {className:"w-[26.13px] h-[30px]"})}
+                      </a>)
+                    })}
+                    
                   </div>
                 </div>
 
                 <div className="w-full md:w-auto flex flex-col sm:flex-row gap-4">
                   <div className="w-auto inline-flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full cursor-pointer">
                     <MdLocationPin className="mr-2 w-[26.13px] h-[30px]" />
-                    <a href="https">7, Howeidy A. street Kado, Abuja</a>
+                    <a
+                      href="https://google.com/maps?q=7+Howeidy+A.+Street+Kado,+Abuja"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      7 Howeidy A. street Kado, Abuja
+                    </a>
                   </div>
 
                   <div className="w-auto inline-flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full cursor-pointer">
@@ -412,9 +415,9 @@ export default function Home() {
           </div>
 
           <div className="w-full sm:w-[400px] flex items-center justify-around">
-            <a href="">Home</a>
-            <a href="">About</a>
-            <a href="">Contact us</a>
+            <a href="/#home">Home</a>
+            <a href="/#about">About</a>
+            <a href="/#contact">Contact us</a>
           </div>
 
           <div className="w-full sm:w-[210px] h-[50px] flex items-center justify-evenly gap-[8px] p-[8px] rounded-md">
