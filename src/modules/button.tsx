@@ -5,7 +5,6 @@ import { CN } from "@/utils/class-merge";
 
 export type ButtonShape = {
   text?: string;
-  variant?: "dark" | "white" | "grey";
   className?: string;
   type?: "button" | "submit" | "reset";
   children?: React.ReactNode;
@@ -16,7 +15,6 @@ export type ButtonShape = {
 /**
  *
  * @param {text} string
- * @param {variant} "dark" | "white" | "grey"
  * @param {className} string
  * @param {children} ReactNode
  *
@@ -24,7 +22,6 @@ export type ButtonShape = {
  */
 export default function Button({
   text,
-  variant = "grey",
   children,
   className,
   type = "button",
