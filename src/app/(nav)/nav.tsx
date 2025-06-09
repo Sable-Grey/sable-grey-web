@@ -1,7 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createElement } from "react";
 import Image from "next/image";
+import { MdOutlineContactPhone, MdOutlineHome } from "react-icons/md";
+import { PiBuildings } from "react-icons/pi";
 
 /* ---------------------------------------------------- */
 
@@ -9,9 +11,9 @@ const navStyle =
   "w-aut0 h-[40px] px-[10px] py-[8px] bg-transparent hover:bg-[#FFFFFF0D] rounded-md";
 
 const navItems = [
-  { icon: "🏠", label: "Home", href: "#" },
-  { icon: "👤", label: "About", href: "#" },
-  { icon: "📞", label: "Contact", href: "#" },
+  { icon: MdOutlineHome, label: "Home", href: "/#home" },
+  { icon: PiBuildings, label: "About", href: "/#about" },
+  { icon: MdOutlineContactPhone, label: "Contact", href: "/#contact" },
 ];
 
 export default function Nav() {
@@ -38,7 +40,7 @@ export default function Nav() {
     <nav className="w-full">
       <div
         id="big-nav"
-        className="hidden w-full lg:flex h-[6.25rem] item-start md:gap-[3rem] lg:gap-[20rem] fixed top-0 left-0 z-20 px-8"
+        className="hidden w-full lg:flex h-[6.25rem] item-start md:gap-[3rem] lg:gap-[20rem] fixed top-0 left-0 z-40 px-8"
       >
         <div className="w-[9rem] lg:w-[12.5rem] h-full">
           <Image
@@ -70,7 +72,13 @@ export default function Nav() {
           className="w-auto fixed top-3 right-2.5 z-50 flex items-center justify-center gap-1.5 py-[12px] px-[20px] bg-[#ffffff42] rounded-md cursor-pointer"
           onClick={toggleNav}
         >
-          <Image src="/logo-icon-white.svg" alt="" className="size-[20px]" />
+          <Image
+            src="/logo-icon-white.svg"
+            alt=""
+            width={0}
+            height={0}
+            className="!size-[20px]"
+          />
           <span className="uppercase font-bold text-white">menu</span>
         </button>
 
@@ -90,13 +98,13 @@ export default function Nav() {
           >
             {/* Child Layer - Navigation Menu */}
             <div
-              className={`absolute top-0 w-80 h-screen bg-transparent bg-opacity-95 backdrop-blur-xl p-2 transition-all duration-500 ease-linear flex flex-col items-center justify-between pb-20 ${
+              className={`absolute top-0 w-80 h-screen bg-transparent bg-opacity-95 backdrop-blur-xl p-2 transition-all duration-500 ease-linear flex flex-col items-center justify-between pb-20 mt-20 ${
                 isOpen ? "right-0 delay-150" : "-right-80"
               }`}
             >
               {/* Navigation Menu */}
               <ul className="w-full space-y-2">
-                {navItems.map((item, index) => (
+                {navItems.map((item, idx) => (
                   <li
                     key={item.label}
                     className={`transition-all duration-300 ease-out ${
@@ -105,15 +113,19 @@ export default function Nav() {
                         : "opacity-0 translate-x-8"
                     }`}
                     style={{
-                      transitionDelay: isOpen ? `${300 + index * 50}ms` : "0ms",
+                      transitionDelay: isOpen ? `${300 + idx * 50}ms` : "0ms",
                     }}
+                    onClick={toggleNav}
                   >
                     <a
                       href={item.href}
-                      className="group relative block p-4 px-6 bg-[#ffffff42] text-white no-underline rounded-xl transition-all duration-300 font-medium text-lg overflow-hidden hover:translate-x-2"
+                      className="group relative p-4 px-6 bg-[#ffffff42] text-white no-underline rounded-xl transition-all duration-300 font-medium text-lg overflow-hidden hover:translate-x-2 flex items-center"
                     >
+                      {createElement(item.icon, {
+                        className:"mr-5"
+                      })}
                       <span className="relative">
-                        {item.icon} {item.label}
+                      {item.label}
                       </span>
                     </a>
                   </li>
