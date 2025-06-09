@@ -110,15 +110,16 @@ export default function Home() {
               id="socials"
               className="w-[210px] h-[50px] sm:w-[50px] sm:h-[210px] bg-glass flex sm:flex-col items-center justify-evenly gap-[8px] p-[8px] rounded-md sm:absolute top-[300px] left-3.5"
             >
-              {socialLightIcons.map((icon, idx) => (
-                <a href="" title="social" key={idx}>
-                  <Image
+              {Object.keys(socialMediaHandles).map((item, idx) => (
+                <a href={socialMediaHandles[item].link} title="social" key={idx} target="_blank" rel="noopener">
+                  {/* <Image
                     src={icon}
                     alt=""
                     width={40}
                     height={40}
                     className="size-fit"
-                  />
+                  /> */}
+                  {createElement(socialMediaHandles[item].lightIcon,{className:"size-[25px] text-white"})}
                 </a>
               ))}
             </div>
@@ -148,7 +149,7 @@ export default function Home() {
           {sliderImages.map((image, idx) => (
             <div
               key={idx}
-              className={`size-full absolute top-0 left-0 inset-0 transition-opacity duration-1000 ease-in-out ${
+              className={`w-full h-screen absolute top-0 left-0 inset-0 transition-opacity duration-1000 ease-in-out ${
                 idx === currentImageIndex ? "opacity-100" : "opacity-0"
               }`}
               style={{
@@ -173,7 +174,7 @@ export default function Home() {
             <div className="w-full h-[150px] sm:h-full sm:w-auto grow flex rounded-lg lg:rounded-none">
               <div className="size-full border border-y border-black">
                 <Image
-                  src="/images/construction.jpg"
+                  src="/images/construction.avif"
                   alt=""
                   width={0}
                   height={0}
@@ -284,7 +285,7 @@ export default function Home() {
 
               <div className="w-full h-full relative sm:grow">
                 <Image
-                  src="/images/design.jpg"
+                  src="/images/design.avif"
                   alt=""
                   width={0}
                   height={0}
@@ -316,7 +317,7 @@ export default function Home() {
         <div id="contact" className="w-full h-auto  px-2">
           <div
             id="office-design-bg"
-            className="w-full h-auto sm:h-[652px] bg-[url(/images/office.jpg)] bg-cover bg-bottom flex items-center justify-center relative"
+            className="w-full h-auto sm:h-[652px] bg-[url(/images/office.avif)] bg-cover bg-bottom flex items-center justify-center relative"
           >
             <div className="size-full flex flex-col items-center justify-center gap-y-10 sm:gap-y-20 sticky z-10 py-10">
               <div className="w-full flex flex-col items-center justify-center">
@@ -349,7 +350,7 @@ export default function Home() {
                     </a>
                   </div>
 
-                  <div className="flex items-center justify-evenly gap-4 flex-wrap">
+                  <div className="flex items-center gap-4 flex-wrap">
                     {Object.keys(socialMediaHandles).map((social, idx) => {
                       return (<a
                       key={idx}
@@ -378,12 +379,12 @@ export default function Home() {
 
                   <div className="w-auto inline-flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full cursor-pointer">
                     <MdLocalPhone className="mr-2 w-[26.13px] h-[30px]" />
-                    <a href="tel:+2349122582603">+2349122582603</a>
+                    <a href="tel:+2349163622081">(+234)9163622081</a>
                   </div>
 
                   <div className="w-auto inline-flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full">
                     <MdLocalPhone className="mr-2 w-[26.13px] h-[30px]" />
-                    <a href="tel:+2349122582603">+2349122582603</a>
+                    <a href="tel:+2349122582603">(+234)9122582603</a>
                   </div>
                 </div>
               </div>
@@ -407,7 +408,9 @@ export default function Home() {
             <Image
               src="/logo-full-white.svg"
               alt=""
-              className="max-w-[200px] h-auto"
+              width={0}
+              height={0}
+              className="!max-w-[200px] h-auto"
             />
           </div>
 
