@@ -1,0 +1,22 @@
+1:"$Sreact.fragment"
+2:I[7555,[],""]
+3:I[1295,[],""]
+4:I[894,[],"ClientPageRoot"]
+5:I[2348,["128","static/chunks/52ab8b6c-4dad6bcd2ad64205.js","479","static/chunks/795d4814-457c2d796fc99bfc.js","446","static/chunks/53c13509-48ecd9d0106e1ac5.js","711","static/chunks/8e1d74a4-568206c3db13e532.js","380","static/chunks/479ba886-0a4ee1faf7052cea.js","24","static/chunks/24-e31729de9300c884.js","974","static/chunks/app/page-0392e6404b15b320.js"],"default"]
+8:I[9665,[],"MetadataBoundary"]
+a:I[9665,[],"OutletBoundary"]
+d:I[4911,[],"AsyncMetadataOutlet"]
+f:I[9665,[],"ViewportBoundary"]
+11:I[6614,[],""]
+:HL["/_next/static/css/daca2ec6062b1df4.css","style"]
+0:{"P":null,"b":"aEBKFSv9bstYDYdP85-kX","p":"","c":["",""],"i":false,"f":[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/daca2ec6062b1df4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"children":["$","h1",null,{"className":"text-white","children":"404"}]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","$L4",null,{"Component":"$5","searchParams":{},"params":{},"promises":["$@6","$@7"]}],["$","$L8",null,{"children":"$L9"}],null,["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","7DJ3F6WQtqCwreVO3Q48k",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[4911,[],"AsyncMetadata"]
+6:{}
+7:{}
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"Sable & Grey Real Estate"}],["$","meta","1",{"name":"description","content":"\n  At Sable and Grey, we believe excellence lives in the details. Every line, every finish, every space is shaped with purpose, \n  and every investment with us is a commitment to enduring value, trust, and rewarding returns. \n  We believe in building not just homes but immersive experiences where every nuance is thoughtfully considered.\n  "}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}
