@@ -16,7 +16,6 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 import { AiFillTikTok } from "react-icons/ai";
-import { TiSocialFacebookCircular } from "react-icons/ti";
 import { RiFacebookCircleLine } from "react-icons/ri";
 import Nav from "./(nav)/nav";
 import sliderImages from "@/slider-images/slider-entry";
