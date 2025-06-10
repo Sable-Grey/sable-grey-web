@@ -17,17 +17,26 @@ import {
 } from "react-icons/fa";
 import { AiFillTikTok } from "react-icons/ai";
 import { TiSocialFacebookCircular } from "react-icons/ti";
+import { RiFacebookCircleLine } from "react-icons/ri";
 import Nav from "./(nav)/nav";
 import sliderImages from "@/slider-images/slider-entry";
 import { IconType } from "react-icons";
 
-/* --------------------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------------- */
 
-const socialMediaHandles: Record<any, {link: string, lightIcon:IconType,filledIcon:IconType}> = {
+const socialMediaHandles: Record<
+  any,
+  { link: string; lightIcon: IconType; filledIcon: IconType }
+> = {
   ig: {
     link: "https://instagram.com/sableandgreyrealestateltd",
     lightIcon: FaInstagram,
     filledIcon: AiFillInstagram,
+  },
+  facebook: {
+    link: "https://instagram.com/sableandgreyrealestateltd",
+    lightIcon: RiFacebookCircleLine,
+    filledIcon: FaFacebook,
   },
   twitter: {
     link: "https://x.com/sableandgreyltd",
@@ -38,11 +47,6 @@ const socialMediaHandles: Record<any, {link: string, lightIcon:IconType,filledIc
     link: "https://tiktok.com/@sableandgreyrealestate",
     lightIcon: FaTiktok,
     filledIcon: AiFillTikTok,
-  },
-  facebook: {
-    link: "https://instagram.com/sableandgreyrealestateltd",
-    lightIcon: TiSocialFacebookCircular,
-    filledIcon: FaFacebook,
   },
   linkedIn: {
     link: "https://linkedin.com/company/sable-and-grey/",
@@ -82,7 +86,7 @@ export default function Home() {
                 Sable & Grey
               </h1>
 
-              <p className="max-w-[39rem] text-[20px] sm:text-[24px] text-white text-center font-light md:font-normal leading-[32px]">
+              <p className="max-w-[39rem] px-1 sm:px-0 text-[20px] sm:text-[24px] text-white text-center font-light md:font-normal leading-[32px]">
                 We build what others promise, quality that shows, and investment
                 that outperforms.
               </p>
@@ -108,18 +112,19 @@ export default function Home() {
             {/* Social media links */}
             <div
               id="socials"
-              className="w-[210px] h-[50px] sm:w-[50px] sm:h-[210px] bg-glass flex sm:flex-col items-center justify-evenly gap-[8px] p-[8px] rounded-md sm:absolute top-[300px] left-3.5"
+              className="w-[210px] h-[50px] sm:w-[50px] sm:h-[210px] bg-glass flex sm:flex-col items-center justify-evenly gap-[9px] p-[8px] rounded-md sm:absolute top-[300px] left-3.5"
             >
               {Object.keys(socialMediaHandles).map((item, idx) => (
-                <a href={socialMediaHandles[item].link} title="social" key={idx} target="_blank" rel="noopener">
-                  {/* <Image
-                    src={icon}
-                    alt=""
-                    width={40}
-                    height={40}
-                    className="size-fit"
-                  /> */}
-                  {createElement(socialMediaHandles[item].lightIcon,{className:"size-[25px] text-white"})}
+                <a
+                  href={socialMediaHandles[item].link}
+                  title="social"
+                  key={idx}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {createElement(socialMediaHandles[item].lightIcon, {
+                    className: "size-[25px] text-white",
+                  })}
                 </a>
               ))}
             </div>
@@ -143,13 +148,13 @@ export default function Home() {
           </div>
 
           {/* dark overlay */}
-          <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-b from-[#00000066] to-[#000000] z-10" />
+          <div className="size-full absolute top-0 left-0 bg-gradient-to-b from-[#00000066] to-[#000000] z-10" />
 
           {/* Background image */}
           {sliderImages.map((image, idx) => (
             <div
               key={idx}
-              className={`w-full h-screen absolute top-0 left-0 inset-0 transition-opacity duration-1000 ease-in-out ${
+              className={`w-full h-screen absolute top-0 left-0 inset-0 transition-opacity duration-1000 ease-in-out hidden sm:block ${
                 idx === currentImageIndex ? "opacity-100" : "opacity-0"
               }`}
               style={{
@@ -160,6 +165,16 @@ export default function Home() {
               }}
             />
           ))}
+
+          <div
+            className="w-full h-screen absolute top-0 left-0 block sm:hidden"
+            style={{
+              backgroundImage: `url(/images/slider/image-1.avif)`,
+              backgroundSize: "cover",
+              backgroundPosition: "center center",
+              backgroundRepeat: "no-repeat",
+            }}
+          ></div>
         </div>
 
         {/* About section */}
@@ -338,7 +353,7 @@ export default function Home() {
               </div>
 
               <div className="w-full flex flex-col items-center gap-[32px]">
-                <div className="w-full md:w-auto flex flex-col sm:flex-row gap-6 sm:gap-4">
+                <div className="w-full px-2 md:w-auto flex flex-col sm:flex-row gap-6 sm:gap-4">
                   <div className="w-auto h-[70px] inline-flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full cursor-pointer">
                     <MdMail className="mr-2 w-[26.13px] h-[30px]" />
                     <a
@@ -352,39 +367,48 @@ export default function Home() {
 
                   <div className="flex items-center gap-4 flex-wrap">
                     {Object.keys(socialMediaHandles).map((social, idx) => {
-                      return (<a
-                      key={idx}
-                        href={socialMediaHandles[social].link}
-                        className="size-[70px] sm:size-[80px] flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full"
-                        target="_blank"
-                      >
-                        {createElement(socialMediaHandles[social].filledIcon, {className:"w-[26.13px] h-[30px]"})}
-                      </a>)
+                      return (
+                        <a
+                          key={idx}
+                          href={socialMediaHandles[social].link}
+                          className="size-[70px] sm:size-[80px] flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full"
+                          target="_blank"
+                        >
+                          {createElement(
+                            socialMediaHandles[social].filledIcon,
+                            { className: "w-[26.13px] h-[30px]" }
+                          )}
+                        </a>
+                      );
                     })}
-                    
                   </div>
                 </div>
 
                 <div className="w-full md:w-auto flex flex-col sm:flex-row gap-4">
-                  <div className="w-auto inline-flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full cursor-pointer">
-                    <MdLocationPin className="mr-2 w-[26.13px] h-[30px]" />
+                  <div className="w-auto text-white bg-glass rounded-full cursor-pointer">
                     <a
                       href="https://google.com/maps?q=7+Howeidy+A.+Street+Kado,+Abuja"
                       target="_blank"
                       rel="noopener"
+                      className="size-full py-[16px] px-[24px] inline-flex items-center justify-center"
                     >
-                      7 Howeidy A. street Kado, Abuja
+                      <MdLocationPin className="mr-5 w-[26.13px] h-[30px]" />
+                      <span>7 Howeidy A. street Kado, Abuja</span>
                     </a>
                   </div>
 
-                  <div className="w-auto inline-flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full cursor-pointer">
-                    <MdLocalPhone className="mr-2 w-[26.13px] h-[30px]" />
-                    <a href="tel:+2349163622081">(+234)9163622081</a>
+                  <div className="w-auto text-white bg-glass rounded-full cursor-pointer">
+                    <a href="tel:+2349163622081" className="size-full py-[16px] px-[24px] inline-flex items-center justify-center">
+                      <MdLocalPhone className="mr-5 w-[26.13px] h-[30px]" />
+                     <span>(+234)9163622081</span>
+                    </a>
                   </div>
 
-                  <div className="w-auto inline-flex items-center justify-center text-white py-[16px] px-[24px] bg-glass rounded-full">
-                    <MdLocalPhone className="mr-2 w-[26.13px] h-[30px]" />
-                    <a href="tel:+2349122582603">(+234)9122582603</a>
+                  <div className="w-auto text-white bg-glass rounded-full cursor-pointer">
+                    <a href="tel:+2349122582603" className="size-full py-[16px] px-[24px] inline-flex items-center justify-center">
+                      <MdLocalPhone className="mr-5 w-[26.13px] h-[30px]" />
+                      <span>(+234)9122582603</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -394,7 +418,7 @@ export default function Home() {
           </div>
 
           <div className="w-full h-auto hidden md:flex items-center justify-center">
-            <h2 className="text-[90px] lg:text-[170px] text-[#212121] leading-[200px]">
+            <h2 className="text-[90px] lg:text-[170px] xl:text-[140px] text-[#212121] leading-[200px]">
               SABLE & GREY
             </h2>
           </div>
