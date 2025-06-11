@@ -333,8 +333,8 @@ export default function Home() {
                     Serious about returns? So are we
                   </h3>
                   <p className="text-white text-[20px] sm:text-[22px] leading-[32px] text-center">
-                    Whether you're an entrepreneur seeking bold vision or a
-                    partner seeking meaningful impact, we'd love to connect.
+                    Whether you&apos;re an entrepreneur seeking bold vision or a
+                    partner seeking meaningful impact, we&apos;d love to connect.
                   </p>
                   <i className="text-white text-center">
                     Reach out to us by clicking or tapping on any of the contact
