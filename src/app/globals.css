@@ -87,7 +87,7 @@ main #socials:hover {
 
 /* About */
 main #about #cover {
-  background-image: url("/images/waw.jpg");
+  background-image: url("/images/waw.avif");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 45%;
