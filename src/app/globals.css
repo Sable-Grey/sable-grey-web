@@ -85,5 +85,14 @@ main #socials:hover {
   transform: scale(1.1);
 }
 
+/* About */
+main #about #cover {
+  background-image: url("/images/waw.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 45%;
+  border-radius: 20px;
+}
+
 /* Contact section */
 
