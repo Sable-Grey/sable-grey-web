@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Button from "@/modules/button";
-import { socialLightIcons } from "./(icons)/entry";
 import { MdLocationPin, MdLocalPhone, MdMail } from "react-icons/md";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaXTwitter } from "react-icons/fa6";
@@ -14,6 +13,10 @@ import {
   FaTiktok,
   FaFacebook,
   FaInstagram,
+  FaStar,
+  FaHandshake,
+  FaGem,
+  FaUserCheck,
 } from "react-icons/fa";
 import { AiFillTikTok } from "react-icons/ai";
 import { RiFacebookCircleLine } from "react-icons/ri";
@@ -54,6 +57,29 @@ const socialMediaHandles: Record<
   },
 };
 
+const coreValues = [
+  {
+    value: "Excellence",
+    caption: "We pursue the highest standards in everything we do.",
+    icon: FaStar,
+  },
+  {
+    value: "Integrity",
+    caption: "We operate with honesty, fairness, and transparency.",
+    icon: FaHandshake,
+  },
+  {
+    value: "Quality",
+    caption: "We deliver real estate solutions that stand the test of time.",
+    icon: FaGem,
+  },
+  {
+    value: "Customer Centricity",
+    caption: "Our clients' needs shape our designs, service, and strategy",
+    icon: FaUserCheck,
+  },
+];
+
 export default function Home() {
   const router = useRouter();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -78,10 +104,10 @@ export default function Home() {
 
       <main>
         {/* Hero section */}
-        <div id="home" className="h-screen relative">
+        <div id="home" className="h-full sm:h-screen 2xl:h-full relative">
           <div className="size-full flex flex-col items-center justify-evenly gap-[40px] sticky pt-40 z-20">
             <div className="w-full lg:w-[52.25rem] flex flex-col items-center justify-center">
-              <h1 className="text-[5.124rem] md:text-[6.25rem] lg:text-[12.5rem] font-bold leading-tight lg:leading-[212px] uppercase text-center mb-[24px]">
+              <h1 className="text-[4.124rem] md:text-[6.25rem] lg:text-[11.5rem] font-bold leading-[90px] lg:leading-[190px] uppercase text-center mb-[24px]">
                 Sable & Grey
               </h1>
 
@@ -153,20 +179,20 @@ export default function Home() {
           {sliderImages.map((image, idx) => (
             <div
               key={idx}
-              className={`w-full h-screen absolute top-0 left-0 inset-0 transition-opacity duration-1000 ease-in-out hidden sm:block ${
+              className={`w-full h-screen 2xl:h-full absolute top-0 left-0 inset-0 transition-opacity duration-1000 ease-in-out hidden sm:block ${
                 idx === currentImageIndex ? "opacity-100" : "opacity-0"
               }`}
               style={{
                 backgroundImage: `url(${image.src})`,
                 backgroundSize: "cover",
-                backgroundPosition: idx === 0 ? "50% 40%" : "center",
+                backgroundPosition: idx === 0 ? "50% 36%" : "center",
                 backgroundRepeat: "no-repeat",
               }}
             />
           ))}
 
           <div
-            className="w-full h-screen absolute top-0 left-0 block sm:hidden"
+            className="w-full h-full sm:h-screen absolute top-0 left-0 block sm:hidden"
             style={{
               backgroundImage: `url(/images/slider/image-1.avif)`,
               backgroundSize: "cover",
@@ -183,36 +209,22 @@ export default function Home() {
         >
           <div
             id="who-we-are"
-            className="w-full h-auto lg:h-[500px] flex flex-col lg:flex-row items-center p-1.5 sm:p-0 lg:border-y sm:border-gray-400 lg:divide-gray-400 lg:divide-x"
+            className="w-full h-auto lg:h-[500px] flex flex-col lg:flex-row items-center p-1.5 sm:p-0"
           >
-            <div className="w-full h-[150px] sm:h-full sm:w-auto grow flex rounded-lg lg:rounded-none">
-              <div className="size-full border border-y border-black">
-                <Image
-                  src="/images/construction.avif"
-                  alt=""
-                  width={0}
-                  height={0}
-                  className="size-full object-cover object-right rounded-l-lg lg:rounded-none"
-                />
-              </div>
-
-              <div className="w-full flex flex-col items-center pl-3 sm:pl-20 sm:pt-4 grow">
-                <div className="w-full">
-                  <span className="block sm:text-[28px] text-gray-400 font-bold underline pb-2">
-                    01
-                  </span>
-
-                  <p className="max-w-[290px] font-light text-white sm:text-[22px] leading-[1.7rem] pt">
-                    Founded: 2022 - Based in Nigeria
-                  </p>
-                </div>
-                <h2 className="w-full text-gray-400 text-[20px] lg:text-[36px] ">
+            <div
+              id="cover"
+              className="w-full lg:w-[350px] h-[300px] sm:h-[450px] rounded-lg lg:rounded-none grow relative flex items-center justify-center"
+            >
+              <div className="z-10">
+                <h2 className="w-full text-white text-3xl lg:text-[60px] text-center">
                   Who are we?
                 </h2>
               </div>
+
+              <div className="absolute top-0 left-0 size-full bg-[#0000008a]" />
             </div>
 
-            <div className="size-full lg:w-[37.5rem] text-white flex flex-col items-center pt-6 gap-[24px]">
+            <div className="size-full lg:w-[37.5rem] text-white flex flex-col items-center justify-center pt-6 gap-[24px]">
               <p className="w-full lg:w-[500px] text-[15px] sm:text-[23px] text-gray-400 px-1 lg:px-4">
                 At Sable and Grey, we believe excellence lives in the details.
                 Every line, every finish, every space is shaped with purpose,
@@ -228,100 +240,72 @@ export default function Home() {
           </div>
 
           <div id="our-vision" className="w-full px-4">
-            <div className="w-full h-auto xl:h-[500px] bg-gradient-to-b from-[#51515166] to-[#FFFFFF00] rounded-lg md:rounded-4xl p-2 sm:p-8 flex flex-col xl:flex-row gap-15">
-              <div className="w-full sm-w-auto flex flex-col sm:flex-row gap-10 md:grow">
-                <div className="w-full sm:w-[170px]">
-                  <div className="">
-                    <span className="block sm:text-[28px] text-gray-400 font-bold underline pb-2">
-                      02
-                    </span>
-
-                    <p className="w-full font-light text-white sm:text-[22px] leading-[1.7rem] pt">
-                      We exist for your luxury
-                    </p>
-                  </div>
-
-                  <h2 className="w-full text-gray-400 text-[20px] lg:text-[36px] hidden xl:block">
-                    Our <br />
-                    <span className="md:pl-6">Vision</span>
-                  </h2>
-
-                  <h2 className="w-full text-gray-400 text-[20px] lg:text-[36px] block xl:hidden">
+            <div className="w-full h-auto bg-gradient-to-b from-[#51515166] to-[#FFFFFF00] rounded-lg md:rounded-4xl p-2 sm:p-8">
+              <div className="flex flex-col xl:flex-row gap-15 mb-40">
+                <div className="w-full sm-w-auto flex flex-col gap-6 md:grow">
+                  <h2 className="w-full text-gray-400 text-[20px] lg:text-[60px]">
                     Our Vision
                   </h2>
-                </div>
 
-                <div className="w-full sm:w-[473px]">
                   <p className="text-[20px] sm:text-[24px] text-gray-500 leading-[32px] mb-[40px]">
                     To be a top-tier and dependable real estate development and
                     investment company defined by quality, trust, and
                     transparency.
                   </p>
+                </div>
 
-                  <ul className="text-[18px] list-disc space-y-4">
-                    <li>
-                      <div className="text-gray-500">
-                        {" "}
-                        <span className="text-white">Excellence:</span> We
-                        pursue the highest standards in everything we do.
-                      </div>
-                    </li>
+                <div className="w-full h-full relative sm:grow">
+                  <div className="w-full h-[450px] lg:size-full relative">
+                    <Image
+                      src="/images/visionary-scraper.avif"
+                      alt=""
+                      width={0}
+                      height={0}
+                      className="size-full rounded-[20px] object-cover"
+                      loading="lazy"
+                    />
 
-                    <li>
-                      <div className="text-gray-500">
-                        {" "}
-                        <span className="text-white">Integrity:</span> We
-                        operate with honesty, fairness, and transparency.
-                      </div>
-                    </li>
+                    <div className="absolute top-0 left-0 size-full bg-[#00000032]" />
+                  </div>
 
-                    <li>
-                      <div className="text-gray-500">
-                        {" "}
-                        <span className="text-white">Quality:</span> We deliver
-                        real estate solutions that stand the test of time.
-                      </div>
-                    </li>
+                  <Button
+                    className="max-w-[250px] h-[4rem] sm:w-[301px] absolute bottom-[10px] left-[10px] rounded-[10px] flex items-center justify-around bg-glass !bg-[#FFFFFF80] hover:!bg-white"
+                    onClick={() => router.push("/#contact")}
+                  >
+                    <span className="">Reach Us</span>
 
-                    <li>
-                      <div className="text-gray-500">
-                        {" "}
-                        <span className="text-white">
-                          Customer Centricity:
-                        </span>{" "}
-                        Our clients&apos; needs shape our designs, service, and
-                        strategy.
-                      </div>
-                    </li>
-                  </ul>
+                    <div className="size-[2.5rem] rounded-full bg-black flex items-center justify-center rotate-[135deg]">
+                      <Image
+                        src="/icons/arrow-right-up.svg"
+                        alt=""
+                        className="size-fit"
+                        width={0}
+                        height={0}
+                      />
+                    </div>
+                  </Button>
                 </div>
               </div>
 
-              <div className="w-full h-full relative sm:grow">
-                <Image
-                  src="/images/design.avif"
-                  alt=""
-                  width={0}
-                  height={0}
-                  className="w-full h-[450px] lg:size-full rounded-[20px] object-cover"
-                />
+              <div className="w-full">
+                <h2 className="w-full text-gray-400 text-[20px] lg:text-[60px] mb-10">
+                  Our Core Values
+                </h2>
 
-                <Button
-                  className="max-w-[250px] h-[4rem] sm:w-[301px] absolute bottom-[10px] left-[10px] rounded-[10px] flex items-center justify-around bg-glass !bg-[#FFFFFF80] hover:!bg-white"
-                  onClick={() => router.push("/#contact")}
-                >
-                  <span className="">Learn More</span>
-
-                  <div className="size-[2.5rem] rounded-full bg-black flex items-center justify-center rotate-[135deg]">
-                    <Image
-                      src="/icons/arrow-right-up.svg"
-                      alt=""
-                      className="size-fit"
-                      width={0}
-                      height={0}
-                    />
-                  </div>
-                </Button>
+                <div className="w-full flex flex-col sm:flex-row items-center gap-10 flex-wrap">
+                  {coreValues.map((value, idx) => (
+                    <div
+                      key={idx}
+                      className="w-full lg:max-w-[400px] h-[200px] text-white bg-glass rounded-xl flex flex-col items-center justify-center px-8"
+                    >
+                      <div className="flex items-center gap-4 mb-10 text-3xl">
+                        <strong className="text-white">{value.value}</strong>
+                        {createElement(value.icon, { className: "text-white" })}
+                      </div>
+                      <p>{value.caption}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -340,15 +324,23 @@ export default function Home() {
                   alt=""
                   width={0}
                   height={0}
-                  className="w-[150px] sm:!w-[200px] mb-10"
+                  className="w-[120px] sm:!w-[130px] mb-10"
+                  loading="lazy"
                 />
-                <Image
-                  src="/logo-full-white.svg"
-                  alt=""
-                  width={0}
-                  height={0}
-                  className="w-[200px]"
-                />
+
+                <div className="max-w-[800px] flex flex-col items-center justify-center gap-4">
+                  <h3 className="text-[20px] lg:text-[36px] text-white">
+                    Serious about returns? So are we
+                  </h3>
+                  <p className="text-white text-[20px] sm:text-[22px] leading-[32px] text-center">
+                    Whether you're an entrepreneur seeking bold vision or a
+                    partner seeking meaningful impact, we'd love to connect.
+                  </p>
+                  <i className="text-white text-center">
+                    Reach out to us by clicking or tapping on any of the contact
+                    directives below.
+                  </i>
+                </div>
               </div>
 
               <div className="w-full flex flex-col items-center gap-[32px]">
@@ -397,14 +389,20 @@ export default function Home() {
                   </div>
 
                   <div className="w-auto text-white bg-glass rounded-full cursor-pointer">
-                    <a href="tel:+2349163622081" className="size-full py-[16px] px-[24px] inline-flex items-center justify-center">
+                    <a
+                      href="tel:+2349163622081"
+                      className="size-full py-[16px] px-[24px] inline-flex items-center justify-center"
+                    >
                       <MdLocalPhone className="mr-5 w-[26.13px] h-[30px]" />
-                     <span>(+234)9163622081</span>
+                      <span>(+234)9163622081</span>
                     </a>
                   </div>
 
                   <div className="w-auto text-white bg-glass rounded-full cursor-pointer">
-                    <a href="tel:+2349122582603" className="size-full py-[16px] px-[24px] inline-flex items-center justify-center">
+                    <a
+                      href="tel:+2349122582603"
+                      className="size-full py-[16px] px-[24px] inline-flex items-center justify-center"
+                    >
                       <MdLocalPhone className="mr-5 w-[26.13px] h-[30px]" />
                       <span>(+234)9122582603</span>
                     </a>
@@ -417,7 +415,7 @@ export default function Home() {
           </div>
 
           <div className="w-full h-auto hidden md:flex items-center justify-center">
-            <h2 className="text-[90px] lg:text-[170px] xl:text-[140px] text-[#212121] leading-[200px]">
+            <h2 className="text-[90px] lg:text-[170px] xl:text-[140px]: 2xl:text-[100px] text-[#212121] leading-[200px]">
               SABLE & GREY
             </h2>
           </div>
@@ -426,17 +424,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer id="#footer" className="px-2 divide-y divide-gray-700 space-y-2">
-        <div className="w-full h-auto sm:h-[5rem]  text-white flex flex-col sm:flex-row items-start sm:items-center justify-around px-3 gap-8">
-          <div className="w-full flex items-center justify-center sm:justify-start">
-            <Image
-              src="/logo-full-white.svg"
-              alt=""
-              width={0}
-              height={0}
-              className="!max-w-[200px] h-auto"
-            />
-          </div>
-
+        <div className="w-full h-auto sm:h-[5rem]  text-white flex flex-col sm:flex-row items-start sm:items-center justify-between px-3 gap-8">
           <div className="w-full sm:w-[400px] flex items-center justify-around">
             <Link href="/#home">Home</Link>
             <Link href="/#about">About</Link>
@@ -444,15 +432,18 @@ export default function Home() {
           </div>
 
           <div className="w-full sm:w-[210px] h-[50px] flex items-center justify-evenly gap-[8px] p-[8px] rounded-md">
-            {socialLightIcons.map((icon, idx) => (
-              <a href="" title="social" key={idx} className="cursor-pointer">
-                <Image
-                  src={icon}
-                  alt=""
-                  width={40}
-                  height={40}
-                  className="size-fit"
-                />
+            {Object.keys(socialMediaHandles).map((item, idx) => (
+              <a
+                href={socialMediaHandles[item].link}
+                title="social"
+                key={idx}
+                className="cursor-pointer"
+                target="_blank"
+                rel="noopener"
+              >
+                {createElement(socialMediaHandles[item].lightIcon, {
+                  className: "size-[25px]",
+                })}
               </a>
             ))}
           </div>
