@@ -40,7 +40,7 @@ export default function Nav() {
     <nav className="w-full">
       <div
         id="big-nav"
-        className="hidden w-full lg:flex h-[6.25rem] item-start md:gap-[3rem] lg:gap-[20rem] fixed top-0 left-0 z-40 px-8"
+        className="hidden w-full h-[5rem] lg:flex item-center justify-between fixed top-0 left-0 z-40 px-8"
       >
         <div className="w-[9rem] lg:w-[12.5rem] h-full">
           <Image
@@ -122,11 +122,9 @@ export default function Nav() {
                       className="group relative p-4 px-6 bg-[#ffffff42] text-white no-underline rounded-xl transition-all duration-300 font-medium text-lg overflow-hidden hover:translate-x-2 flex items-center"
                     >
                       {createElement(item.icon, {
-                        className:"mr-5"
+                        className: "mr-5",
                       })}
-                      <span className="relative">
-                      {item.label}
-                      </span>
+                      <span className="relative">{item.label}</span>
                     </a>
                   </li>
                 ))}
