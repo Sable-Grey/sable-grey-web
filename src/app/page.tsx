@@ -104,7 +104,7 @@ export default function Home() {
 
       <main>
         {/* Hero section */}
-        <div id="home" className="h-full sm:h-screen 2xl:h-full relative">
+        <div id="home" className="size-full md:h-screen lg:h-full relative">
           <div className="size-full flex flex-col items-center justify-evenly gap-[40px] sticky pt-40 z-20">
             <div className="w-full lg:w-[52.25rem] flex flex-col items-center justify-center">
               <h1 className="text-[4.124rem] md:text-[6.25rem] lg:text-[11.5rem] font-bold leading-[90px] lg:leading-[190px] uppercase text-center mb-[24px]">
@@ -179,20 +179,20 @@ export default function Home() {
           {sliderImages.map((image, idx) => (
             <div
               key={idx}
-              className={`w-full h-screen 2xl:h-full absolute top-0 left-0 inset-0 transition-opacity duration-1000 ease-in-out hidden sm:block ${
+              className={`size-full md:h-screen lg:h-full absolute top-0 left-0 inset-0 transition-opacity duration-1000 ease-in-out hidden sm:block ${
                 idx === currentImageIndex ? "opacity-100" : "opacity-0"
               }`}
               style={{
                 backgroundImage: `url(${image.src})`,
                 backgroundSize: "cover",
-                backgroundPosition: idx === 0 ? "50% 36%" : "center",
+                backgroundPosition: idx === 0 ? "50% 33%" : "center",
                 backgroundRepeat: "no-repeat",
               }}
             />
           ))}
 
           <div
-            className="w-full h-full sm:h-screen absolute top-0 left-0 block sm:hidden"
+            className="size-full md:h-screen lg:h-full absolute top-0 left-0 block sm:hidden"
             style={{
               backgroundImage: `url(/images/slider/image-1.avif)`,
               backgroundSize: "cover",
@@ -216,7 +216,7 @@ export default function Home() {
               className="w-full lg:w-[350px] h-[300px] sm:h-[450px] rounded-lg lg:rounded-none grow relative flex items-center justify-center"
             >
               <div className="z-10">
-                <h2 className="w-full text-white text-3xl lg:text-[60px] text-center">
+                <h2 className="w-full text-white text-[20px] md:text-4xl lg:text-[60px] text-center">
                   Who are we?
                 </h2>
               </div>
@@ -243,7 +243,7 @@ export default function Home() {
             <div className="w-full h-auto bg-gradient-to-b from-[#51515166] to-[#FFFFFF00] rounded-lg md:rounded-4xl p-2 sm:p-8">
               <div className="flex flex-col xl:flex-row gap-15 mb-40">
                 <div className="w-full sm-w-auto flex flex-col gap-6 md:grow">
-                  <h2 className="w-full text-gray-400 text-[20px] lg:text-[60px]">
+                  <h2 className="w-full text-gray-400 text-[20px] md:text-4xl lg:text-[60px]">
                     Our Vision
                   </h2>
 
@@ -288,11 +288,11 @@ export default function Home() {
               </div>
 
               <div className="w-full">
-                <h2 className="w-full text-gray-400 text-[20px] lg:text-[60px] mb-10">
+                <h2 className="w-full text-gray-400 text-[20px] md:text-4xl lg:text-[60px] mb-10">
                   Our Core Values
                 </h2>
 
-                <div className="w-full flex flex-col sm:flex-row items-center gap-10 flex-wrap">
+                <div className="w-full flex flex-col md:flex-row items-start justify-start md:items-center md:justify-center gap-10 flex-wrap">
                   {coreValues.map((value, idx) => (
                     <div
                       key={idx}
