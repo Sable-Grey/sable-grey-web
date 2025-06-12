@@ -104,24 +104,24 @@ export default function Home() {
 
       <main>
         {/* Hero section */}
-        <div id="home" className="size-full md:h-screen lg:h-full relative">
+        <div id="home" className="size-full md:h-screen 2xhl:h-full relative">
           <div className="size-full flex flex-col items-center justify-evenly gap-[40px] sticky pt-40 z-20">
             <div className="w-full lg:w-[52.25rem] flex flex-col items-center justify-center">
-              <h1 className="text-[4.124rem] md:text-[6.25rem] lg:text-[11.5rem] font-bold leading-[90px] lg:leading-[190px] uppercase text-center mb-[24px]">
+              <h1 className="text-[3.124rem] md:text-[6.25rem] font-bold leading-[90px] lg:leading-[190px] uppercase text-center mb-[12px] sm:mb-[24px]">
                 Sable & Grey
               </h1>
 
-              <p className="max-w-[39rem] px-1 sm:px-0 text-[20px] sm:text-[24px] text-white text-center font-light md:font-normal leading-[32px]">
+              <p className="max-w-[39rem] px-1 sm:px-0 text-[18px] sm:text-[24px] text-white text-center font-light md:font-normal leading-[32px]">
                 We build what others promise, quality that shows, and investment
                 that outperforms.
               </p>
             </div>
 
             <Button
-              className="w-[340px] flex items-center justify-around rounded-full bg-[#212121] hover:bg-[#484848] text-white"
+              className="w-[300px]  md:w-[340px] flex items-center justify-around rounded-full bg-[#212121] hover:bg-[#484848] text-white"
               onClick={() => router.push("/#contact")}
             >
-              <span className="uppercase">Talk To us today</span>
+              <span className="uppercase mr-3">Talk To us today</span>
 
               <div className="size-[2.5rem] rounded-full bg-black flex items-center justify-center">
                 <Image
@@ -155,7 +155,7 @@ export default function Home() {
             </div>
 
             {/* Slider indicator */}
-            <div className="w-auto h-auto sm:w-[2.5rem] flex sm:flex-col gap-[8px] sm:absolute top-[300px] right-3.5">
+            <div className="w-auto h-auto sm:w-[2.5rem] flex sm:flex-col gap-[8px] sm:absolute top-[300px] right-3.5 hidden sm:block">
               {sliderImages.map((_, idx) => (
                 <div
                   key={idx}
@@ -199,7 +199,7 @@ export default function Home() {
               backgroundPosition: "center center",
               backgroundRepeat: "no-repeat",
             }}
-          ></div>
+          />
         </div>
 
         {/* About section */}
@@ -225,14 +225,14 @@ export default function Home() {
             </div>
 
             <div className="size-full lg:w-[37.5rem] text-white flex flex-col items-center justify-center pt-6 gap-[24px]">
-              <p className="w-full lg:w-[500px] text-[15px] sm:text-[23px] text-gray-400 px-1 lg:px-4">
+              <p className="w-full text-[15px] sm:text-[23px] lg:w-[500px] text-gray-400 px-1 lg:px-4">
                 At Sable and Grey, we believe excellence lives in the details.
                 Every line, every finish, every space is shaped with purpose,
                 and every investment with us is a commitment to enduring value,
                 trust, and rewarding returns.
               </p>
 
-              <p className="w-full lg:w-[500px] text-[15px] sm:text-[23px] px-1 lg:px-4">
+              <p className="w-full text-[15px] sm:text-[23px] lg:w-[500px] px-1 lg:px-4">
                 We believe in building not just homes but immersive experiences
                 where every nuance is thoughtfully considered.
               </p>
@@ -243,11 +243,11 @@ export default function Home() {
             <div className="w-full h-auto bg-gradient-to-b from-[#51515166] to-[#FFFFFF00] rounded-lg md:rounded-4xl p-2 sm:p-8">
               <div className="flex flex-col xl:flex-row gap-15 mb-40">
                 <div className="w-full sm-w-auto flex flex-col gap-6 md:grow">
-                  <h2 className="w-full text-gray-400 text-[20px] md:text-4xl lg:text-[60px]">
+                  <h2 className="w-full text-white text-[20px] md:text-4xl lg:text-[60px]">
                     Our Vision
                   </h2>
 
-                  <p className="text-[20px] sm:text-[24px] text-gray-500 leading-[32px] mb-[40px]">
+                  <p className="text-[15px] sm:text-[23px] text-gray-500 leading-[32px] mb-[40px]">
                     To be a top-tier and dependable real estate development and
                     investment company defined by quality, trust, and
                     transparency.
@@ -288,7 +288,7 @@ export default function Home() {
               </div>
 
               <div className="w-full">
-                <h2 className="w-full text-gray-400 text-[20px] md:text-4xl lg:text-[60px] mb-10">
+                <h2 className="w-full text-white text-[20px] md:text-4xl lg:text-[60px] mb-10">
                   Our Core Values
                 </h2>
 
@@ -298,7 +298,7 @@ export default function Home() {
                       key={idx}
                       className="w-full lg:max-w-[400px] h-[200px] text-white bg-glass rounded-xl flex flex-col items-center justify-center px-8"
                     >
-                      <div className="flex items-center gap-4 mb-10 text-3xl">
+                      <div className="flex items-center gap-4 mb-10 text-[1.5rem]">
                         <strong className="text-white">{value.value}</strong>
                         {createElement(value.icon, { className: "text-white" })}
                       </div>
@@ -332,9 +332,10 @@ export default function Home() {
                   <h3 className="text-[20px] lg:text-[36px] text-white">
                     Serious about returns? So are we
                   </h3>
-                  <p className="text-white text-[20px] sm:text-[22px] leading-[32px] text-center">
+                  <p className="max-w-[650px] text-white text-[18px] sm:text-[20px] leading-[32px] text-center">
                     Whether you&apos;re an entrepreneur seeking bold vision or a
-                    partner seeking meaningful impact, we&apos;d love to connect.
+                    partner seeking meaningful impact, we&apos;d love to
+                    connect.
                   </p>
                   <i className="text-white text-center">
                     Reach out to us by clicking or tapping on any of the contact
@@ -415,7 +416,7 @@ export default function Home() {
           </div>
 
           <div className="w-full h-auto hidden md:flex items-center justify-center">
-            <h2 className="text-[90px] lg:text-[170px] xl:text-[140px]: 2xl:text-[100px] text-[#212121] leading-[200px]">
+            <h2 className="text-[4.124rem] md:text-[6.25rem] text-[#212121] leading-[200px]">
               SABLE & GREY
             </h2>
           </div>
