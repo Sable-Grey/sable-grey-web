@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      //@ts-expect-error
+      //@ts-expect-error Just ignore man
       maxVideoPreview: -1,
       maxImagePreview: "large",
       maxSnippet: -1,
