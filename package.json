@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "gh-pages -d out"
+    "deploy": "next build && gh-pages -d out",
+    "deploy-manual": "next build && touch out/.nojekyll && cd out && git init && git add -A && git commit -m 'Deploy' && git push -f git@github.com:sable-grey/sable-grey-web.git main:gh-pages"
   },
   "dependencies": {
     "clsx": "^2.1.1",
